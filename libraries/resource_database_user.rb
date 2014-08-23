@@ -32,6 +32,7 @@ class Chef
         @privileges = [:all]
         @grant_option = false
         @require_ssl = false
+        @with_grant_option = false
 
         @allowed_actions.push(:create, :drop, :grant)
         @action = :create
@@ -56,6 +57,14 @@ class Chef
       def require_ssl(arg=nil)
         set_or_return(
           :require_ssl,
+          arg,
+          :kind_of => [ TrueClass, FalseClass ]
+        )
+      end
+
+      def with_grant_option(arg=nil)
+        set_or_return(
+          :with_grant_option,
           arg,
           :kind_of => [ TrueClass, FalseClass ]
         )
