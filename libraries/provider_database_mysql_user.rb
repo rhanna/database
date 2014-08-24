@@ -72,7 +72,7 @@ class Chef
             if (@new_resource.require_ssl) then
               grant_statement += " REQUIRE SSL"
             end
-            if (@new_resource.with_grant_option) then
+            if (@new_resource.grant_option) then
               grant_statement += " WITH GRANT OPTION"
             end
             Chef::Log.info("#{@new_resource}: granting access with statement [#{grant_statement}#{filtered}]")
